@@ -1,11 +1,13 @@
 from flask import Flask, render_template, url_for, request, flash
 from flask.helpers import flash
-import pickle
-import sklearn
+import pickle, sklearn, os
 from werkzeug.utils import redirect
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = b'_12345#y2L"F4Q8z\n\xec]/'
+app.secret_key = os.getenv('secret')
 
 @app.route('/')
 @app.route('/index')
